@@ -1,0 +1,37 @@
+.counter-box {
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.message {
+    font-weight: bold;
+    color: blue;
+    margin-bottom: 15px;
+}
+
+.btn-group button,
+.custom-increment button {
+    margin: 5px;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-group button:disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
+}
+
+input {
+    padding: 6px;
+    width: 120px;
+    margin-right: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}

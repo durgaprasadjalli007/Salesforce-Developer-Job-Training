@@ -1,0 +1,199 @@
+:host .property-card {
+    background: #fff !important;
+    border-radius: 20px !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08) !important;
+    overflow: hidden !important;
+    transition: all 0.25s ease !important;
+}
+:host .property-card:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12) !important;
+}
+
+:host .property-card .image-container {
+    position: relative !important;
+    width: 100% !important;
+    height: 240px !important;
+    overflow: hidden !important;
+}
+:host .property-card .property-image {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    border-top-left-radius: 20px !important;
+    border-top-right-radius: 20px !important;
+}
+
+:host .property-card .status-pill {
+    position: absolute !important;
+    top: 10px !important;
+    left: 10px !important;
+    padding: 0.35rem 0.75rem !important;
+    border-radius: 16px !important;
+    font-size: 0.7rem !important;
+    font-weight: 700 !important;
+    color: #fff !important;
+    text-transform: uppercase !important;
+    z-index: 10 !important;
+}
+:host .property-card .status-pill.available { background: #2e844a !important; }
+:host .property-card .status-pill.pending { background: #ffb75d !important; }
+:host .property-card .status-pill.sold { background: #ba0517 !important; }
+:host .property-card .status-pill.withdrawn { background: #808080 !important; }
+:host .property-card .status-pill.under-contract { background: #d97706 !important; }
+
+:host .property-card .favorite-icon {
+    position: absolute !important;
+    top: 12px !important;
+    right: 12px !important;
+    background: #ffffff !important;
+    border: 1px solid black !important;
+    border-radius: 50% !important;
+    width: 28px !important;
+    height: 28px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12) !important;
+    z-index: 20 !important;
+    cursor: pointer !important;
+    transition: all 0.25s ease !important;
+}
+:host .property-card .favorite-icon:hover {
+    transform: scale(1.08) !important;
+}
+
+:host .property-card .favorite-icon lightning-icon {
+    --sds-c-icon-color-foreground-default: #444 !important;
+}
+:host .property-card .favorite-icon lightning-icon svg {
+    fill: #444 !important;
+    stroke: #444 !important;
+}
+
+:host .property-card .favorite-icon.active {
+    border-color: #1a73e8 !important;
+}
+:host .property-card .favorite-icon.active lightning-icon {
+    --sds-c-icon-color-foreground-default: #1a73e8 !important;
+}
+:host .property-card .favorite-icon.active lightning-icon svg {
+    fill: #1a73e8 !important;
+    stroke: #1a73e8 !important;
+}
+
+:host .property-card .card-body {
+    padding: 1rem 1.2rem !important;
+}
+:host .property-card .property-name {
+    font-size: 1.1rem !important;
+    font-weight: 800 !important;
+    color: #1a1a1a !important;
+    margin-bottom: 0.4rem !important;
+}
+:host .property-card .price {
+    font-size: 1.3rem !important;
+    font-weight: 700 !important;
+    color: #0176d3 !important;
+    margin: 0.3rem 0 !important;
+}
+
+:host .property-card .property-meta {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.4rem !important;
+    font-size: 0.9rem !important;
+    color: #444 !important;
+    margin-bottom: 0.4rem !important;
+}
+:host .property-card .property-type {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.3rem !important;
+}
+:host .property-card .property-meta lightning-icon {
+    --sds-c-icon-color-foreground-default: #444 !important;
+    --slds-c-icon-size: 1rem !important;
+}
+
+:host .property-card .features {
+    display: flex !important;
+    gap: 0.4rem !important;
+    margin: 0.6rem 0 1rem !important;
+}
+:host .property-card .pill {
+    background: #f1f1f1 !important;
+    border-radius: 20px !important;
+    padding: 0.3rem 0.7rem !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.35rem !important;
+    font-weight: 600 !important;
+    font-size: 0.8rem !important;
+    color: #333 !important;
+}
+:host .property-card .pill-icon {
+    --sds-c-icon-color-foreground-default: #555 !important;
+}
+
+:host .property-card .secondary-actions {
+    display: flex !important;
+    justify-content: flex-start !important;
+    gap: 2rem !important;
+    margin-top: 0.5rem !important;
+}
+:host .property-card .secondary-actions lightning-button,
+:host .property-card .secondary-actions .action-btn {
+    background: none !important;
+    border: 1px solid #0176d3 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+}
+
+:host .property-card .secondary-actions .action-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.4rem !important;
+    padding: 0.4rem 1.2rem !important;
+    border-radius: 999px !important;
+    background-color: #ffffff !important;
+    color: #0176d3 !important;
+    border: 1px solid #0176d3 !important;
+    font-size: 0.9rem !important;
+    text-decoration: none !important;
+    cursor: pointer !important;
+    transition: background-color 0.2s, border-color 0.2s, color 0.2s !important;
+    box-shadow: none !important;
+}
+
+:host .property-card .secondary-actions .action-btn lightning-icon {
+    --sds-c-icon-color-foreground-default: #0176d3 !important;
+}
+:host .property-card .secondary-actions .action-btn lightning-icon svg {
+    fill: #0176d3 !important;
+    stroke: #0176d3 !important;
+}
+
+:host .property-card .secondary-actions .action-btn .btn-icon {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 1.2em !important;
+}
+:host .property-card .secondary-actions .action-btn .btn-label {
+    line-height: 1 !important;
+}
+:host .property-card .secondary-actions .action-btn:hover {
+    background-color: #f0f6ff !important;
+    border-color: #005cb3 !important;
+    color: #005cb3 !important;
+}
+:host .property-card .secondary-actions .action-btn:active {
+    background-color: #e5efff !important;
+    border-color: #004a8f !important;
+    color: #004a8f !important;
+}
+:host .property-card .secondary-actions .action-btn:focus {
+    outline: 2px dashed #005cb3 !important;
+    outline-offset: 2px !important;
+}

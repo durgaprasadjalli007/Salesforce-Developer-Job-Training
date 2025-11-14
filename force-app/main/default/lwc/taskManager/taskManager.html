@@ -1,0 +1,200 @@
+<template>
+    <div class="app-root">
+        <!-- ===== HEADER BANNER ===== -->
+        <header class="banner">
+            <div class="banner-inner">
+                <h1 class="app-title">My To-Do List</h1>
+                <p class="app-sub">Stay organized and get things done</p>
+                <div class="stats">
+                    <div class="stat-card">
+                        <div class="stat-icon">📋</div>
+                        <div class="stat-text">
+                            <div class="stat-value">{totalTasks}</div>
+                            <div class="stat-label">Total Tasks</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">✅</div>
+                        <div class="stat-text">
+                            <div class="stat-value">{completedTasks}</div>
+                            <div class="stat-label">Completed</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">⏳</div>
+                        <div class="stat-text">
+                            <div class="stat-value">{pendingTasks}</div>
+                            <div class="stat-label">Pending</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📊</div>
+                        <div class="stat-text">
+                            <div class="stat-value">{completionRate}%</div>
+                            <div class="stat-label">Completion</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="container">
+            <!-- ===== ADD / EDIT TASK FORM ===== -->
+            <lightning-card class="card form-card" title={formTitle}>
+                <div class="card-body task-form">
+                    <lightning-input
+                        data-field="title"
+                        label="Task Title"
+                        placeholder="Enter task title..."
+                        value={title}
+                        onchange={handleFieldChange}
+                        maxlength="100"
+                        required>
+                    </lightning-input>
+
+                    <lightning-textarea
+                        data-field="description"
+                        label="Description (Optional)"
+                        placeholder="Add task description..."
+                        value={description}
+                        onchange={handleFieldChange}
+                        maxlength="500">
+                    </lightning-textarea>
+
+                    <div class="field-row">
+                        <lightning-combobox
+                            data-field="category"
+                            label="Category"
+                            options={categoryOptions}
+                            value={category}
+                            onchange={handleFieldChange}
+                            required>
+                        </lightning-combobox>
+
+                        <lightning-combobox
+                            data-field="priority"
+                            label="Priority"
+                            options={priorityOptions}
+                            value={priority}
+                            onchange={handleFieldChange}
+                            required>
+                        </lightning-combobox>
+
+                        <lightning-input
+                            data-field="dueDate"
+                            type="date"
+                            label="Due Date (Optional)"
+                            value={dueDate}
+                            onchange={handleFieldChange}>
+                        </lightning-input>
+                    </div>
+
+                    <div class="form-actions">
+                        <lightning-button
+                            label={saveButtonLabel}
+                            variant="brand"
+                            onclick={handleSave}
+                            disabled={isSaveDisabled}>
+                        </lightning-button>
+                        <template if:true={isEditing}>
+                            <lightning-button
+                                label="Cancel"
+                                variant="neutral"
+                                onclick={cancelEdit}>
+                            </lightning-button>
+                        </template>
+                    </div>
+                </div>
+            </lightning-card>
+
+            <!-- ===== FILTERS ===== -->
+            <lightning-card class="card filters-card">
+                <div class="card-body filters">
+                    <div class="filter-row">
+                        <lightning-input
+                            type="text"
+                            label="Search Tasks"
+                            placeholder="Search by title or description..."
+                            value={searchKey}
+                            onchange={handleSearchFilter}
+                            class="filter-input">
+                        </lightning-input>
+
+                        <lightning-combobox
+                            label="Filter by Status"
+                            value={selectedStatus}
+                            placeholder="All Tasks"
+                            options={statusOptions}
+                            onchange={handleStatusFilter}>
+                        </lightning-combobox>
+
+                        <lightning-combobox
+                            label="Filter by Category"
+                            value={selectedCategory}
+                            placeholder="All Categories"
+                            options={categoryOptions}
+                            onchange={handleCategoryFilter}>
+                        </lightning-combobox>
+
+                        <lightning-combobox
+                            label="Filter by Priority"
+                            value={selectedPriority}
+                            placeholder="All Priorities"
+                            options={priorityOptions}
+                            onchange={handlePriorityFilter}>
+                        </lightning-combobox>
+
+                        <lightning-button
+                            variant="neutral"
+                            label="Clear Filters"
+                            icon-name="utility:close"
+                            icon-position="left"
+                            onclick={clearAllFilters}>
+                        </lightning-button>
+                    </div>
+                </div>
+            </lightning-card>
+
+            <!-- ===== TASK LIST ===== -->
+            <lightning-card class="card tasks-card">
+                <div class="card-header slds-grid slds-grid_align-spread slds-align_absolute-center">
+                    <h2 class="tasks-title"><b>Tasks ({taskCount})</b></h2>
+
+                    <lightning-button-menu
+                        alternative-text="Sort"
+                        icon-name="utility:sort"
+                        menu-alignment="right"
+                        class="slds-m-right_medium"
+                        onselect={handleSortSelect}>
+                        <lightning-menu-item value="dateNewest" label="Date — Newest First"></lightning-menu-item>
+                        <lightning-menu-item value="dateOldest" label="Date — Oldest First"></lightning-menu-item>
+                        <lightning-menu-item value="priority" label="Priority — High → Low"></lightning-menu-item>
+                        <lightning-menu-item value="dueDate" label="Due Date — Earliest First"></lightning-menu-item>
+                    </lightning-button-menu>
+                </div>
+
+                <div class="card-body">
+                    <template if:true={hasVisibleTasks}>
+                        <template for:each={visibleTasks} for:item="task">
+                            <c-task-card
+                                key={task.id}
+                                task={task}
+                                ontoggle={handleToggle}
+                                onedit={handleEdit}
+                                ondelete={handleDelete}>
+                            </c-task-card>
+                        </template>
+                    </template>
+
+                    <template if:false={hasVisibleTasks}>
+                        <div class="empty-state">
+                            <lightning-icon icon-name="utility:page" size="large"></lightning-icon>
+                            <h3>No tasks found</h3>
+                            <p>Try adding a new task or adjust filters.</p>
+                        </div>
+                    </template>
+                </div>
+            </lightning-card>
+        </main>
+    </div>
+</template>

@@ -1,0 +1,92 @@
+<template>
+  <lightning-card icon-name="standard:property" class="my-card">
+    <div class="custom-card-header">
+      <h1 class="card-title"><b>Property Details</b></h1>
+    </div>
+    <div class="slds-p-around_medium">
+      <div class="left-section"></div>
+
+      <template if:true={error}>
+        <div class="slds-text-color_error">{error}</div>
+      </template>
+
+      <template if:true={isLoading}>
+        <lightning-spinner alternative-text="Loading property" size="small"></lightning-spinner>
+      </template>
+
+      <template if:true={propertyRecord}>
+        <div class="slds-grid slds-wrap slds-gutters_medium">
+
+          <div class="slds-col slds-size_2-of-3">
+            <div class="slds-grid slds-grid_align-spread slds-m-bottom_small">
+              <h2 class="slds-text-heading_medium">{name}</h2>
+              <lightning-badge label={statusLabel} class="status-badge"></lightning-badge>
+            </div>
+
+            <section class="slds-section slds-m-bottom_medium">
+              <h3 class="slds-text-title_bold slds-m-bottom_xx-small">Basic Info</h3>
+              <div class="slds-grid slds-wrap slds-gutters_small">
+                <div class="slds-col slds-size_1-of-2">
+                  <p><strong>Type:</strong> {type}</p>
+                  <p><strong>Price:</strong> {price}</p>
+                </div>
+                <div class="slds-col slds-size_1-of-2">
+                  <p><strong>Bedrooms:</strong> {bedrooms}</p>
+                  <p><strong>Bathrooms:</strong> {bathrooms}</p>
+                  <p><strong>Square Feet:</strong> {squareFeet}</p>
+                </div>
+              </div>
+            </section>
+
+            <section class="slds-section slds-m-bottom_medium">
+              <h3 class="slds-text-title_bold slds-m-bottom_xx-small">Location Details</h3>
+              <p>{address}</p>
+            </section>
+
+            <section class="slds-section slds-m-bottom_medium">
+              <h3 class="slds-text-title_bold slds-m-bottom_xx-small">Description</h3>
+              <p class="description">{description}</p>
+            </section>
+
+            <section class="slds-section slds-m-bottom_medium">
+              <h3 class="slds-text-title_bold slds-m-bottom_xx-small">Agent Information</h3>
+              <p><strong>{agentName}</strong></p>
+              <template if:true={showAgentContact}>
+                <p>Email: {agentEmail}</p>
+                <p>Phone: {agentPhone}</p>
+                <p>Experience: {agentExperience}</p>
+                <p>Status: {agentStatus}</p>
+                <p>Specialization: {agentSpecialization}</p>
+              </template>
+            </section>
+
+            <!-- Property Images Section -->
+<template if:true={propertyImages}>
+    <div class="image-gallery">
+        <template for:each={propertyImages} for:item="img">
+            <div key={img.Id}>
+                <img src={img.Image_Url__c} alt={img.Name} class="property-image" onerror={handleImageError}/>
+            </div>
+        </template>
+    </div>
+</template>
+
+<template if:false={propertyImages}>
+    <div class="no-image">
+        <img src={defaultImage} alt="No Image Available" />
+    </div>
+</template>
+
+
+            <!-- Action Buttons -->
+            <div class="slds-p-top_small">
+              <lightning-button variant="brand" label="Contact" onclick={handleContact}></lightning-button>
+              <lightning-button variant="neutral" label="Tour" onclick={handleTour} class="slds-m-left_x-small"></lightning-button>
+            </div>
+          </div>
+
+        </div>
+      </template>
+    </div>
+  </lightning-card>
+</template>

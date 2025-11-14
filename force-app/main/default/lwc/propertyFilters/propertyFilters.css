@@ -1,0 +1,50 @@
+:host {
+    display: block;
+}
+
+/* Outer light-gray box */
+.filters-section {
+    background: #f4f4f4;
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+/* Grid layout for fields */
+.filters-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.6rem 1.5rem;
+    margin-bottom: 0.8rem;
+}
+
+/* Compact comboboxes and inputs using SLDS tokens */
+lightning-input,
+lightning-combobox {
+    --slds-c-input-spacing-block-start: 0.25rem;
+    --slds-c-input-spacing-block-end: 0.25rem;
+    --slds-c-input-sizing-min-height: 1.7rem;
+    --slds-c-input-font-size: 0.85rem;
+
+    --slds-c-combobox-sizing-min-height: 1.7rem;
+    --slds-c-combobox-font-size: 0.85rem;
+}
+
+/* Compact labels */
+.slds-form-element__label {
+    font-size: 0.75rem !important;
+    margin-bottom: 0.15rem !important;
+    color: #444 !important;
+}
+
+/* Clear button centered */
+.clear-btn {
+    text-align: center;
+}
+
+.clear-btn lightning-button {
+    --slds-c-button-font-size: 0.8rem;
+    --slds-c-button-line-height: 1rem;
+    --slds-c-button-spacing-block-start: 0.2rem;
+    --slds-c-button-spacing-block-end: 0.2rem;
+}

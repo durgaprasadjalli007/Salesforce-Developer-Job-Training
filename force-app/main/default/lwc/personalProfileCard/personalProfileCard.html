@@ -1,0 +1,18 @@
+<template>
+    <lightning-card title="Personal Profile" icon-name="standard:user">
+        <div class="slds-p-around_medium slds-grid slds-wrap">
+            <div class="slds-size_1-of-1 slds-medium-size_1-of-3 slds-text-align_center">
+                <img src={profilePic}
+                     alt="Profile Picture"
+                     class="profile-img"/>
+            </div>
+            <div class="slds-size_1-of-1 slds-medium-size_2-of-3 slds-p-left_medium">
+                <p class="slds-text-heading_medium">{fullName}</p>
+                <p class="slds-text-title">{jobTitle}</p>
+                <p><lightning-formatted-email value={email}></lightning-formatted-email></p>
+                <p><lightning-formatted-phone value={phone}></lightning-formatted-phone></p>
+                <p class="slds-m-top_small">{bio}</p>
+            </div>
+        </div>
+    </lightning-card>
+</template>

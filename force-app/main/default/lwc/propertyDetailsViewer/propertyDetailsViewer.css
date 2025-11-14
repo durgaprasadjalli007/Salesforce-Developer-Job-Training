@@ -1,0 +1,160 @@
+:host {
+  display: block;
+  font-family: "Salesforce Sans", Arial, sans-serif;
+  background: #f9fafb;
+  min-height: 100vh;
+  padding: 1rem 0;
+}
+
+lightning-card {
+  max-width: 960px;
+  margin: 0 auto;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  background: #fff;
+}
+
+.info-col {
+  padding: 0.5rem 1rem;
+}
+
+.status-badge {
+  background-color: #0176d3;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 2rem;
+  padding: 0.25rem 0.9rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.slds-text-title_caps {
+  color: #4b4b4b;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.description {
+  color: #555;
+  line-height: 1.5;
+}
+
+p {
+  margin: 0.25rem 0;
+  color: #222;
+  font-size: 0.9rem;
+}
+
+lightning-button {
+  --slds-c-button-radius-border: 1.5rem;
+}
+
+/* 🏡 Property Image Section */
+.image-gallery {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 1rem;
+}
+
+.property-image {
+  width: 230px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.image-gallery .property-image {
+    width: 100%;
+    max-width: 300px; 
+    height: auto;
+}
+.property-image:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.no-image {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.no-image img {
+  width: 180px;
+  height: 120px;
+  border-radius: 8px;
+  opacity: 0.85;
+}
+
+@media (max-width: 768px) {
+  lightning-card {
+    margin: 0 0.5rem;
+  }
+
+  .info-col {
+    padding: 0.5rem;
+  }
+  .modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.7);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.modal-image {
+  max-width: 100%;
+  max-height: 80vh;
+  border-radius: 8px;
+}
+
+.close-button {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #333;
+  cursor: pointer;
+}
+.custom-card-header {
+    text-align: left;        
+    border-bottom: 1px solid #d8dde6;
+    padding: 1rem 0;
+    background-color: #f3f6f9;
+}
+
+.card-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #16325c;
+    margin-left: 1rem;       
+}
+}

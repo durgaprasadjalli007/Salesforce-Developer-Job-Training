@@ -1,0 +1,32 @@
+.slds-p-around_medium {
+    text-align: center;
+}
+
+img {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 200px;
+    height: auto;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    margin-top: 20px;
+}
+
+p {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #333;
+}
+
+p.none-message {
+    font-size: 20px;
+    color: #ff0000;
+    font-weight: bold;
+    margin-top: 20px;
+}

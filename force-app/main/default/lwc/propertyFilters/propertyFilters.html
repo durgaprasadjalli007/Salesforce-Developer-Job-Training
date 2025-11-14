@@ -1,0 +1,51 @@
+<template>
+    <div class="filters-grid">
+        <lightning-combobox
+            name="city"
+            label="City"
+            value={filters.city}
+            options={cityOptions}
+            onchange={handleFilterChange}>
+        </lightning-combobox>
+
+        <lightning-combobox
+            name="type"
+            label="Property Type"
+            value={filters.type}
+            options={typeOptions}
+            onchange={handleFilterChange}>
+        </lightning-combobox>
+
+        <lightning-combobox
+            name="status"
+            label="Status"
+            value={filters.status}
+            options={statusOptions}
+            onchange={handleFilterChange}>
+        </lightning-combobox>
+
+        <lightning-input
+            type="number"
+            name="minPrice"
+            label="Min Price"
+            value={filters.minPrice}
+            onchange={handleFilterChange}>
+        </lightning-input>
+
+        <lightning-input
+            type="number"
+            name="maxPrice"
+            label="Max Price"
+            value={filters.maxPrice}
+            onchange={handleFilterChange}>
+        </lightning-input>
+
+        <lightning-input
+            type="number"
+            name="minBedrooms"
+            label="Min Bedrooms"
+            value={filters.minBedrooms}
+            onchange={handleFilterChange}>
+        </lightning-input>
+    </div>
+</template>

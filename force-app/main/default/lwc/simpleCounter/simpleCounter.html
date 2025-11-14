@@ -1,0 +1,26 @@
+<template>
+    <div class="counter-box" style={counterStyle}>
+        <h1>Counter: {count}</h1>
+
+        <!-- Conditional message -->
+        <template if:true={showMessage}>
+            <p class="message">You reached 10!</p>
+        </template>
+
+        <!-- Buttons -->
+        <div class="btn-group">
+            <button onclick={handleIncrement}>+1</button>
+            <button onclick={handleDecrement} disabled={isDecrementDisabled}>-1</button>
+            <button onclick={handleAddFive}>+5</button>
+            <button onclick={handleReset}>Reset</button>
+            <button onclick={handleDouble}>Double</button>
+        </div>
+
+        <!-- Custom increment -->
+        <div class="custom-increment">
+            <input type="number" value={customIncrement} 
+                   onchange={handleCustomChange} placeholder="Enter increment" />
+            <button onclick={handleCustomIncrement}>Add Custom</button>
+        </div>
+    </div>
+</template>

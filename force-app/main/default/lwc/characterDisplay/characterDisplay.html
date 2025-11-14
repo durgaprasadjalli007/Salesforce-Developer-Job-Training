@@ -1,0 +1,47 @@
+<template>
+    <lightning-card title="Character Display">
+        <div class="slds-p-around_medium">
+            <lightning-combobox 
+                name="characterSelect"
+                label="Select Character"
+                value={selectedCharacter}
+                placeholder="Select a character"
+                options={characterOptions}
+                onchange={handleCharacterChange}>
+            </lightning-combobox>
+
+            <div class="slds-m-top_medium">
+                <template if:true={isTom}>
+                    <div>
+                        <img src={tomSrc} alt="Tom" width="200"/>
+                        <p>Tom Cat</p>
+                    </div>
+                </template>
+
+                <template if:true={isJerry}>
+                    <div>
+                        <img src={jerrySrc} alt="Jerry" width="200"/>
+                        <p>Jerry Mouse</p>
+                    </div>
+                </template>
+
+                <template if:true={isBoth}>
+                    <div class="flex-container">
+                        <div>
+                            <img src={tomSrc} alt="Tom" width="200"/>
+                            <p>Tom Cat</p>
+                        </div>
+                        <div>
+                            <img src={jerrySrc} alt="Jerry" width="200"/>
+                            <p>Jerry Mouse</p>
+                        </div>
+                    </div>
+                </template>
+
+                <template if:true={isNone}>
+                    <p class="none-message">No character selected</p>
+                </template>
+            </div>
+        </div>
+    </lightning-card>
+</template>

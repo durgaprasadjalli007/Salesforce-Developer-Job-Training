@@ -1,0 +1,103 @@
+<template>
+    <div class="contact-card slds-box slds-box_xx-small slds-m-around_medium">
+        <div class="header-row">
+            <div class="header-left">
+                <lightning-icon icon-name="standard:contact" size="small" class="icon"></lightning-icon>
+                <h2 class="title">Contact Information</h2>
+            </div>
+
+            <div class="header-right">
+                <template if:false={isEditMode}>
+                    <lightning-button variant="brand" label="Edit" onclick={handleEdit}></lightning-button>
+                    <lightning-button variant="destructive" label="Delete" onclick={handleDelete}></lightning-button>
+                </template>
+                <template if:true={isEditMode}>
+                    <lightning-button variant="brand" label="Save" onclick={handleSave}></lightning-button>
+                    <lightning-button variant="neutral" label="Cancel" onclick={handleCancel}></lightning-button>
+                </template>
+            </div>
+        </div>
+
+        <template if:true={isLoading}>
+            <div class="slds-p-around_medium">
+                <lightning-spinner alternative-text="Loading contact"></lightning-spinner>
+            </div>
+        </template>
+
+        <!-- VIEW MODE -->
+        <template if:true={contact}>
+            <template if:false={isEditMode}>
+                <div class="slds-grid slds-wrap slds-p-around_medium field-grid">
+                    <div class="slds-col slds-size_1-of-2">
+                        <p class="label">Name</p>
+                        <p>{name}</p>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <p class="label">Account</p>
+                        <p>{accountName}</p>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <p class="label">Email</p>
+                        <p>{email}</p>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <p class="label">Phone</p>
+                        <p>{phone}</p>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <p class="label">Mobile</p>
+                        <p>{mobile}</p>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <p class="label">Title</p>
+                        <p>{title}</p>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <p class="label">Department</p>
+                        <p>{department}</p>
+                    </div>
+                </div>
+            </template>
+        </template>
+
+        <!-- EDIT MODE -->
+        <template if:true={isEditMode}>
+            <div class="form-row">
+                <lightning-input label="First Name" data-field="FirstName" value={firstName} onchange={handleChange} required></lightning-input>
+                <lightning-input label="Last Name" data-field="LastName" value={lastName} onchange={handleChange} required></lightning-input>
+            </div>
+
+              <div class="form-row">
+                <lightning-input label="Email" type="email" data-field="Email" value={email} onchange={handleChange} required></lightning-input>
+                <lightning-input label="Phone" data-field="Phone" value={phone} onchange={handleChange} required></lightning-input>
+            </div>
+
+            <div class="form-row">
+                <lightning-input label="Title" data-field="Title" value={title} onchange={handleChange} required></lightning-input>
+                <lightning-input label="Department" data-field="Department" value={department} onchange={handleChange}></lightning-input>
+            </div>
+            
+            <div class="form-row">
+                <lightning-input label="Mobile" data-field="MobilePhone" value={mobile} onchange={handleChange}></lightning-input>
+        
+            <!-- Account Lookup -->
+               <div class="account-lookup">
+                    <label class="slds-form-element__label"></label>
+                    <lightning-record-edit-form object-api-name="Contact" record-id={recordId}>
+                        <lightning-input-field
+                            field-name="AccountId"
+                            onchange={handleAccountChange}>
+                        </lightning-input-field>
+                    </lightning-record-edit-form>
+                </div>
+            </div>
+                
+                </template>
+
+        <template if:true={error}>
+            <div class="slds-text-color_error slds-p-around_medium">
+                Couldn't load this contact.
+            </div>
+        </template>
+    </div>
+</template>

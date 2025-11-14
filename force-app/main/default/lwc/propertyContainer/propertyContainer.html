@@ -1,0 +1,68 @@
+<template>
+    <section class="search-container">
+
+        <!-- Property Search Header -->
+        <div class="property-search-header">
+            <div class="icon-wrapper">
+                <lightning-icon 
+                    icon-name="utility:home"
+                    size="x-small"
+                    alternative-text="Property Search"
+                    class="property-icon">
+                </lightning-icon>
+            </div>
+            <span class="property-title">Property Search</span>
+        </div>
+
+        <!-- Filters Section -->
+        <div class="filters-section">
+            <c-property-filters
+                filters={filters}
+                onfilterchange={handleFilterChange}>
+            </c-property-filters>
+
+            <!-- Clear Filters Button (inside grey tile) -->
+            <div class="filters-actions">
+                <lightning-button 
+                    label="Clear All Filters"
+                    onclick={handleClearFilters}
+                    variant="neutral">
+                </lightning-button>
+            </div>
+        </div>
+
+        <!-- Loading State -->
+        <template if:true={isLoading}>
+            <div class="loading">
+                <p>Loading properties...</p>
+            </div>
+        </template>
+
+        <!-- Property Results -->
+        <template if:true={properties}>
+            <div class="property-grid">
+                <template for:each={properties} for:item="propertyItem">
+                    <c-property-card 
+                        key={propertyItem.Id}
+                        property={propertyItem}>
+                    </c-property-card>
+                </template>
+            </div>
+        </template>
+
+        <!-- Error State -->
+        <template if:true={error}>
+            <div class="error">
+                <p>Error loading properties. Please try again.</p>
+            </div>
+        </template>
+
+        <!-- Empty State -->
+        <template if:true={showNoResults}>
+            <div class="no-results">
+                <p>No properties found. Adjust your filters and try again.</p>
+            </div>
+        </template>
+
+    </section>
+</template>

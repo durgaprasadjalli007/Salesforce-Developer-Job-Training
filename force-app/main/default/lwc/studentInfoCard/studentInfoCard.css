@@ -1,0 +1,38 @@
+.student-card {
+    font-family: 'Roboto', Arial, sans-serif; /* clean, readable font */
+    font-size: 14px;
+    line-height: 1.5;
+    color: #16325c; /* dark text for readability */
+    background-color: #f4f6f9; /* light background for contrast */
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    max-width: 350px;
+}
+
+.student-card h2.student-name {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.student-card p {
+    margin: 0.25rem 0;
+}
+
+.student-status {
+    font-weight: 500;
+}
+
+.student-grade,
+.student-enrollment,
+.student-total,
+.student-subjects {
+    margin-top: 0.25rem;
+    font-size: 0.95rem;
+    color: #0b3c5d;
+}
+
+.slds-theme_default {
+    background-color: #ffffff; /* override if needed */
+}

@@ -1,0 +1,56 @@
+.lightning-card {
+    max-width: 800px;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.slds-p-around_medium {
+    padding: 1rem;
+}
+
+p {
+    margin: 0.4rem 0;
+    font-size: 14px;
+    color: #1e293b;
+}
+
+strong {
+    font-weight: 600;
+}
+
+.lightning-input {
+    margin-bottom: 1rem;
+}
+
+.actions {
+    display: flex;
+    gap: 12px;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 50px;
+    font-size: 12px;
+    color: #fff;
+    text-transform: capitalize;
+}
+
+.status-New { background-color: #16a34a; }
+.status-InProgress { background-color: #2563eb; }
+.status-Resolved { background-color: #f59e0b; }
+.status-Closed { background-color: #6b7280; }
+
+@media (max-width: 600px) {
+    .lightning-card {
+        margin: 10px;
+    }
+    .lightning-input {
+        width: 100%;
+    }
+    .actions {
+        flex-direction: column;
+        gap: 8px;
+    }
+}

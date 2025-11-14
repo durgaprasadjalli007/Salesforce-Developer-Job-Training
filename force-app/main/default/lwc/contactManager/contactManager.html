@@ -1,0 +1,116 @@
+<template>
+    <lightning-card title="Contact Manager" icon-name="standard:contact">
+        <div class="slds-m-around_medium search-filter-section">
+            <lightning-input type="search"
+                label="Search Contacts"
+                placeholder="Enter name, email, or phone"
+                value={searchQuery}
+                onchange={handleSearchInput}
+                class="search-input">
+            </lightning-input>
+           
+            <lightning-combobox label="Filter by Account"
+                placeholder="Select Account"
+                value={accountFilterId}
+                options={accountOptions}
+                onchange={handleAccountFilter}
+                class="account-filter">
+            </lightning-combobox>
+
+            <lightning-button label="New Contact"
+                variant="brand"
+                class="slds-m-top_small"
+                onclick={openNewContactForm}>
+            </lightning-button>
+        </div>
+
+        <template if:true={loading}>
+            <div class="spinner-container">
+                <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+            </div>
+        </template>
+
+        <template if:true={contactList}>
+            <template for:each={contactList} for:item="c">
+                <div key={c.Id} class="contact-card">
+                    <div class="contact-details">
+                        <p><strong>Email:</strong> {c.Email}</p>
+                        <p><strong>Phone:</strong> {c.Phone}</p>
+                        <p><strong>Account:</strong> {c.AccountName}</p>
+                    </div>
+
+                    <div class="contact-actions">
+                        <lightning-button label="Edit"
+                            variant="neutral"
+                            data-id={c.Id}
+                            onclick={handleEdit}>
+                        </lightning-button>
+                        <lightning-button label="Delete"
+                            variant="destructive"
+                            data-id={c.Id}
+                            onclick={handleDelete}>
+                        </lightning-button>
+                    </div>
+                </div>
+            </template>
+        </template>
+
+        <template if:true={noResults}>
+            <div class="slds-p-around_medium slds-text-align_center slds-text-color_weak">
+                No contacts found.
+            </div>
+        </template>
+    </lightning-card>
+
+    <template if:true={showForm}>
+        <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <h2 class="slds-text-heading_medium">{modalHeader}</h2>
+                </header>
+
+                <div class="slds-modal__content slds-p-around_medium">
+                    <lightning-input label="First Name"
+                        value={form.FirstName}
+                        onchange={handleFormChange}
+                        data-field="FirstName">
+                    </lightning-input>
+
+                    <lightning-input label="Last Name"
+                        required
+                        value={form.LastName}
+                        onchange={handleFormChange}
+                        data-field="LastName">
+                    </lightning-input>
+
+                    <lightning-input label="Email"
+                        type="email"
+                        value={form.Email}
+                        onchange={handleFormChange}
+                        data-field="Email">
+                    </lightning-input>
+
+                    <lightning-input label="Phone"
+                        value={form.Phone}
+                        onchange={handleFormChange}
+                        data-field="Phone">
+                    </lightning-input>
+
+                    <lightning-combobox label="Account"
+                        placeholder="Select Account"
+                        value={form.AccountId}
+                        options={accountOptions}
+                        onchange={handleFormChange}
+                        data-field="AccountId">
+                    </lightning-combobox>
+                </div>
+
+                <footer class="slds-modal__footer">
+                    <lightning-button label="Cancel" onclick={closeForm}></lightning-button>
+                    <lightning-button label="Save" variant="brand" onclick={saveContact}></lightning-button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>

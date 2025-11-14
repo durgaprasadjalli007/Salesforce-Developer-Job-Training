@@ -1,0 +1,46 @@
+<template>
+   <template if:true={task}>
+        <article class="task-card">
+            <div class="left-section">
+                <!-- ✅ Custom green checkbox -->
+                <div class="left-col">
+                    <div class={checkboxWrapperClass} onclick={handleToggle} role="checkbox" aria-checked={task.isCompleted} tabindex="0">
+                        <div class="custom-check"></div>
+                    </div>
+                </div>
+
+                <!-- task content -->
+                <div class="center-col">
+                    <h3 class={titleClass}>{task.title}</h3>
+                    
+                    <template if:true={task.description}>
+                        <p class={descClass}>{task.description}</p>
+                    </template>
+
+                    <div class="small-badges">
+                        <span class={categoryClass}>{task.category}</span>
+                        <span class={priorityClass}>{task.priority}</span>
+                        <span class={dueDateClass}>{dueDateLabel}</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ACTIONS (edit / delete) -->
+            <div class="actions-col">
+                <lightning-button-icon 
+                    icon-name="utility:edit" 
+                    alternative-text="Edit" 
+                    title="Edit Task"
+                    onclick={handleEdit}>
+                </lightning-button-icon>
+
+                <lightning-button-icon 
+                    icon-name="utility:delete" 
+                    alternative-text="Delete" 
+                    title="Delete Task"
+                    onclick={handleDelete}>
+                </lightning-button-icon>
+            </div>
+        </article>
+    </template>
+</template>

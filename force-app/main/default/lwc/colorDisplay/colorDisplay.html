@@ -1,0 +1,14 @@
+<template>
+    <div class="display-container" style={containerStyle}>
+        <h2>Pick a Color:</h2>
+
+        <!-- Child component -->
+        <c-color-picker oncolorselected={handleColorSelected}></c-color-picker>
+
+        <!-- Selected color info -->
+        <template if:true={selectedColor}>
+            <p><strong>Selected Color:</strong> {selectedColor.colorName}</p>
+            <p><strong>Hex Code:</strong> {selectedColor.hexCode}</p>
+        </template>
+    </div>
+</template>

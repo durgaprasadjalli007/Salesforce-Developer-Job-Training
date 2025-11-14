@@ -1,0 +1,49 @@
+<template>
+    <lightning-card title="Interactive Calculator" icon-name="utility:calculator">
+        <div class="slds-p-around_medium slds-text-align_center">
+            <!-- Display -->
+            <div class="calculator-display slds-m-bottom_small">{display}</div>
+
+            <!-- Number Buttons -->
+            <div class="slds-grid slds-wrap slds-m-bottom_small">
+                <template for:each={numbers} for:item="num">
+                    <div key={num} class="slds-col slds-size_1-of-3 slds-p-around_xx-small">
+                        <lightning-button label={num} onclick={handleNumberClick} data-value={num} variant="neutral"></lightning-button>
+                    </div>
+                </template>
+                <div class="slds-col slds-size_1-of-3 slds-p-around_xx-small">
+                    <lightning-button label="0" onclick={handleNumberClick} data-value="0" variant="neutral"></lightning-button>
+                </div>
+                <div class="slds-col slds-size_1-of-3 slds-p-around_xx-small">
+                    <lightning-button label="." onclick={handleNumberClick} data-value="." variant="neutral"></lightning-button>
+                </div>
+            </div>
+
+            <!-- Operation Buttons -->
+            <div class="slds-grid slds-wrap">
+                <div class="slds-col slds-size_1-of-4 slds-p-around_xx-small">
+                    <lightning-button label="+" onclick={handleOperationClick} data-op="+" variant="brand"></lightning-button>
+                </div>
+                <div class="slds-col slds-size_1-of-4 slds-p-around_xx-small">
+                    <lightning-button label="-" onclick={handleOperationClick} data-op="-" variant="brand"></lightning-button>
+                </div>
+                <div class="slds-col slds-size_1-of-4 slds-p-around_xx-small">
+                    <lightning-button label="×" onclick={handleOperationClick} data-op="*" variant="brand"></lightning-button>
+                </div>
+                <div class="slds-col slds-size_1-of-4 slds-p-around_xx-small">
+                    <lightning-button label="÷" onclick={handleOperationClick} data-op="/" variant="brand"></lightning-button>
+                </div>
+            </div>
+
+            <!-- Equals and Clear -->
+            <div class="slds-grid slds-wrap slds-m-top_small">
+                <div class="slds-col slds-size_1-of-2 slds-p-around_xx-small">
+                    <lightning-button label="=" onclick={handleEquals} variant="success"></lightning-button>
+                </div>
+                <div class="slds-col slds-size_1-of-2 slds-p-around_xx-small">
+                    <lightning-button label="C" onclick={handleClear} variant="destructive"></lightning-button>
+                </div>
+            </div>
+        </div>
+    </lightning-card>
+</template>

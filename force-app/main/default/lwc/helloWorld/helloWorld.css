@@ -1,0 +1,15 @@
+.main-div {
+    background : gray;
+    color: white;
+    padding: 5px;
+    font-family: cursive;
+    font-size: large;
+    border: 13px solid gray;
+    border-radius: 10px;
+    margin: 2px;
+}
+
+.heading {
+    font-size: 28px;
+    color: rgb(26, 28, 26);
+}

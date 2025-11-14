@@ -1,0 +1,141 @@
+.contact-card {
+    background: #ffffff;
+    border-radius: 0.75rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    padding: 1rem 1rem 0.5rem 1rem;
+    font-family: "Salesforce Sans", Arial, sans-serif;
+    max-width: 950px;
+    margin: 0 auto;
+}
+
+.form-row {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+}
+
+.header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 1.5rem 0.8rem 1.5rem;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.icon {
+    --slds-c-icon-color-foreground-default: #8a2be2;
+}
+
+.title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #182952;
+}
+
+.header-right lightning-button {
+    margin-left: 0.6rem;
+    --slds-c-button-radius-border: 2rem;
+    --slds-c-button-font-weight: 600;
+    --slds-c-button-font-size: 0.9rem;
+    --slds-c-button-line-height: 1.7rem;
+    --slds-c-button-spacing-inline: 1.1rem;
+}
+
+.field-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem 2rem;
+    padding: 0 1.5rem 1rem;
+}
+
+.field-grid p.label {
+    font-size: 0.85rem;
+    color: #6b6b6b;
+    font-weight: 500;
+    margin-bottom: 0.15rem;
+}
+
+.field-grid p {
+    margin: 0;
+}
+
+.field-grid p.value {
+    font-size: 1rem;
+    color: #1a1a1a;
+    font-weight: 600;
+}
+
+.edit-mode .field-grid lightning-input,
+.edit-mode .field-grid lightning-input-field,
+.edit-mode .field-grid lightning-combobox {
+    width: 100%;
+    --slds-c-input-text-font-size: 0.95rem;
+    --slds-c-input-spacing-block-start: 0.4rem;
+    --slds-c-input-color-border: #d0d0d0;
+    --slds-c-input-color-border-focus: #0176d3;
+    --slds-c-input-radius-border: 0.25rem;
+}
+
+.edit-mode lightning-input label::after {
+    content: none !important;
+}
+
+.field-grid lightning-input[data-field="Email"] {
+    grid-column: span 2;
+}
+
+.account-lookup {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    flex: 1 1 0;
+    grid-column: span 1;
+}
+
+.account-lookup lightning-record-edit-form,
+.account-lookup lightning-input-field.lookup {
+    width: 100%;
+}
+
+.account-lookup .slds-form-element__label,
+.account-lookup label {
+    font-size: 0.85rem;
+    color: #6b6b6b;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+}
+
+.account-lookup .slds-combobox__input:hover,
+.account-lookup .slds-combobox__input:focus,
+.account-lookup .slds-input:focus {
+    border-color: #1b96ff;
+    box-shadow: 0 0 0 1px #1b96ff;
+}
+
+.account-lookup .slds-pill_container {
+    margin-top: 0.25rem;
+    width: 100%;
+}
+
+.account-lookup .slds-input {
+    border-radius: 0.25rem;
+    border: 1px solid #d8dde6;
+    height: 34px;
+    font-size: 0.95rem;
+    padding-left: 0.75rem;
+}
+
+.account-lookup .slds-input__icon {
+    color: #747474;
+}
+
+lightning-spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,0 +1,30 @@
+<template>
+    <div class="step-container">
+        <h3>Step 2: Address Info</h3>
+
+        <div class="form-field">
+            <label>Street:</label>
+            <input type="text" name="street" value={street} onchange={handleChange} />
+        </div>
+
+        <div class="form-field">
+            <label>City:</label>
+            <input type="text" name="city" value={city} onchange={handleChange} />
+        </div>
+
+        <div class="form-field">
+            <label>State:</label>
+            <input type="text" name="state" value={state} onchange={handleChange} />
+        </div>
+
+        <div class="form-field">
+            <label>Zip:</label>
+            <input type="text" name="zip" value={zip} onchange={handleChange} />
+        </div>
+
+        <div>
+            <button onclick={handlePrevious}>Previous</button>
+            <button onclick={handleNext}>Next</button>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningMessageChannel xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Lightning Message Channel for cart updates with summary information</description>
+    <isExposed>true</isExposed>
+    <lightningMessageFields>
+        <description>The ID of the cart that changed</description>
+        <fieldName>cartId</fieldName>
+    </lightningMessageFields>
+    <lightningMessageFields>
+        <description>Total number of items in the cart</description>
+        <fieldName>itemCount</fieldName>
+    </lightningMessageFields>
+    <lightningMessageFields>
+        <description>Total amount of the cart</description>
+        <fieldName>totalAmount</fieldName>
+    </lightningMessageFields>
+    <lightningMessageFields>
+        <description>The action performed (add, remove, update, clear)</description>
+        <fieldName>action</fieldName>
+    </lightningMessageFields>
+    <masterLabel>CartChanged</masterLabel>
+</LightningMessageChannel>

@@ -1,0 +1,36 @@
+<template>
+    <div class="shop-container">
+        <h2>Available Products</h2>
+        <div class="product-grid">
+            <template for:each={products} for:item="prod">
+                <c-product-card 
+                    key={prod.id} 
+                    product={prod} 
+                    onaddtocart={handleAddToCart}>
+                </c-product-card>
+            </template>
+        </div>
+
+        <h2>Shopping Cart</h2>
+        <template if:true={cartItems.length}>
+            <ul>
+                <template for:each={cartItems} for:item="item">
+                    <li key={item.productId}>
+                        {item.productName} - Qty: {item.quantity} - $ {item.total}
+                        <button onclick={handleRemove} data-id={item.productId}>Remove</button>
+                    </li>
+                </template>
+            </ul>
+            <p><strong>Total Items:</strong> {totalItems}</p>
+            <p><strong>Total Price:</strong> ${totalPrice}</p>
+        </template>
+
+        <template if:false={cartItems.length}>
+            <p>Cart is empty</p>
+        </template>
+
+        <template if:true={showSuccess}>
+            <p class="success">Item added to cart!</p>
+        </template>
+    </div>
+</template>

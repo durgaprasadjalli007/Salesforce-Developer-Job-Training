@@ -1,0 +1,22 @@
+<template>
+    <div class="step-container">
+        <h3>Step 1: Personal Info</h3>
+
+        <div class="form-field">
+            <label>Name*</label>
+            <input type="text" name="name" value={name} onchange={handleChange} />
+        </div>
+
+        <div class="form-field">
+            <label>Email*</label>
+            <input type="email" name="email" value={email} onchange={handleChange} />
+        </div>
+
+        <div class="form-field">
+            <label>Phone*</label>
+            <input type="tel" name="phone" value={phone} onchange={handleChange} />
+        </div>
+
+        <button onclick={handleNext}>Next</button>
+    </div>
+</template>

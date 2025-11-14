@@ -1,0 +1,181 @@
+:host {
+    display: block;
+    font-family: "Salesforce Sans", Arial, sans-serif;
+    background: #f9fafb;
+    min-height: 100vh;
+}
+
+/* ===== HEADER BANNER ===== */
+.banner {
+    padding: 12px 0 8px;
+}
+.banner-inner {
+    max-width: 950px;
+    margin: 0 auto;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    border-radius: 16px;
+    padding: 32px 24px;
+    color: #fff;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+.app-title {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+.app-sub {
+    margin: 8px 0 16px;
+    opacity: 0.9;
+}
+
+/* ===== STATS CARDS ===== */
+.stats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 16px;
+}
+.stat-card {
+    flex: 1 1 100px;
+    min-width: 100px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    backdrop-filter: blur(6px);
+    transition: transform 0.2s ease;
+}
+.stat-card:hover {
+    transform: translateY(-2px);
+}
+.stat-icon {
+    min-width: 30px;
+    min-height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+}
+.stat-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.stat-label {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.9);
+}
+.stat-value {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-top: 4px;
+}
+
+/* ===== CONTAINER ===== */
+.container {
+    max-width: 950px;
+    margin: 8px auto 24px;
+    padding: 0 16px;
+}
+
+/* ===== CARD ===== */
+.card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-bottom: 24px;
+}
+.card-body {
+    padding: 20px 24px;
+}
+
+/* ===== FORM ===== */
+.field-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 8px;
+}
+.task-form lightning-input,
+.task-form lightning-textarea,
+.task-form lightning-combobox {
+    display: block;
+    margin: 8px 0 16px;
+}
+.form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 12px;
+}
+.form-actions lightning-button[variant="brand"] {
+    --slds-c-button-brand-color-background: #667eea;
+    --slds-c-button-brand-color-background-hover: #5a67d8;
+    --slds-c-button-brand-color-border: #667eea;
+    --slds-c-button-radius-border: 8px;
+    font-weight: 600;
+}
+
+/* ===== FILTERS ===== */
+.filters-card {
+    background: #f9fafb;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    border: 1px solid #e5e7eb;
+    margin-top: 12px;
+}
+.filters-card .card-body {
+    padding: 16px 20px;
+}
+.filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: end;
+}
+.filter-row lightning-input,
+.filter-row lightning-combobox {
+    flex: 1 1 200px;
+}
+.filter-actions lightning-button {
+    --slds-c-button-neutral-color-background: #fff;
+    --slds-c-button-neutral-color-border: #d1d5db;
+    --slds-c-button-radius-border: 6px;
+    --slds-c-button-neutral-color-text: #2563eb;
+    font-weight: 600;
+}
+.filter-actions lightning-button:hover {
+    --slds-c-button-neutral-color-border: #2563eb;
+    background: #eff6ff;
+}
+
+/* ===== EMPTY STATE ===== */
+.empty-state {
+    text-align: center;
+    padding: 40px 0;
+    color: #666;
+}
+.empty-state h3 {
+    margin: 8px 0 4px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 720px) {
+    .filter-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .stats {
+        flex-direction: column;
+        gap: 12px;
+    }
+    .stat-card {
+        flex: 1 1 auto;
+    }
+}

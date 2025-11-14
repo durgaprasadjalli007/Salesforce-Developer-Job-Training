@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Inspection_Contingency__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Inspection contingency included</description>
+    <inlineHelpText>Check if offer includes inspection contingency</inlineHelpText>
+    <label>Inspection_Contingency</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

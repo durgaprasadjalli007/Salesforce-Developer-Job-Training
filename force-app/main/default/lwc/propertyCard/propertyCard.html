@@ -1,0 +1,75 @@
+<template>
+    <div class="property-card">
+        <div class="image-container">
+            <template if:true={hasImages}>
+                <img src={firstImageUrl} alt="Property Image" class="property-image" />
+            </template>
+            <template if:false={hasImages}>
+                <img src={DefaultSrc} alt="No Image Available" class="property-image" />
+            </template>
+
+            <template if:true={property.Property_Status__c}>
+                <span class={statusClass}>{property.Property_Status__c}</span>
+            </template>
+
+            <lightning-button-icon
+                icon-name={favoriteIcon}
+                alternative-text="Favorite"
+                class="favorite-icon"
+                onclick={toggleFavorite}
+                variant="bare"
+                size="small">
+            </lightning-button-icon>
+        </div>
+
+        <div class="card-body">
+            <h2 class="property-name">{property.Name}</h2>
+
+            <p class="price">
+                <template if:true={property.Listing_Price__c}>
+                    <lightning-formatted-number
+                        value={property.Listing_Price__c}
+                        format-style="currency">
+                    </lightning-formatted-number>
+                </template>
+                <template if:false={property.Listing_Price__c}>
+                    N/A
+                </template>
+            </p>
+
+            <p class="location">{locationName}</p>
+            <div class="property-type"> 
+                <lightning-icon icon-name="utility:home" size="x-small"></lightning-icon>
+                <span>{property.Property_Type__c}</span>    
+                    </div>
+
+            <div class="features">
+                <span class="pill">   {property.Bedrooms__c} Beds
+                </span>
+                <span class="pill">
+                    <lightning-icon icon-name="utility:water" size="x-small" class="pill-icon"></lightning-icon>
+                    {property.Bathrooms__c} Baths
+                </span>
+            </div>
+                <div class="actions">
+                <lightning-button
+                    label="View Details"
+                    onclick={navigateToPropertyDetail}
+                    variant="brand">
+                </lightning-button>
+
+    
+                <div class="secondary-actions">
+                    <button class="action-btn">
+                        <lightning-icon icon-name="utility:email" size="x-small" class="btn-icon"></lightning-icon>
+                        <span class="btn-label">Contact</span>
+                    </button>
+                    <button class="action-btn">
+                        <lightning-icon icon-name="utility:event" size="x-small" class="btn-icon"></lightning-icon>
+                        <span class="btn-label">Tour</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

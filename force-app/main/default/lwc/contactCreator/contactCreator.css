@@ -1,0 +1,23 @@
+.form-row {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+    
+}
+
+
+.account-lookup {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 0;
+}
+.hint {
+    font-size: 0.8rem;
+    color: #6b6b6b;
+    margin-top: 0.25rem;
+}
+.button-row {
+    margin-top: 1rem;
+    display: flex;
+    gap: 0.75rem;
+}

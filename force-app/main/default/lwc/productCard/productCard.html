@@ -1,0 +1,10 @@
+<template>
+    <template if:true={product}>
+        <div class="card">
+            <img src={product.image} alt={product.name} class="product-image" />
+            <h3>{product.name}</h3>
+            <p>Price: ${product.price}</p>
+            <button onclick={handleAddToCart}>Add to Cart</button>
+        </div>
+    </template>
+</template>

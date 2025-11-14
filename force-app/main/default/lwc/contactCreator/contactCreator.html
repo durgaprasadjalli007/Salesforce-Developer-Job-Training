@@ -1,0 +1,43 @@
+<template>
+    <lightning-card title="Create Contact" icon-name="standard:contact">
+        <div class="slds-p-around_medium">
+            <template if:true={isLoading}>
+                <lightning-spinner alternative-text="Creating contact" size="small"></lightning-spinner>
+            </template>
+
+            <template if:true={error}>
+                <div class="slds-text-color_error">{error}</div>
+            </template>
+
+            <div class="form-row">
+                <lightning-input label="First Name" data-field="FirstName" value={firstName} onchange={handleChange} required></lightning-input>
+                <lightning-input label="Last Name" data-field="LastName" value={lastName} onchange={handleChange} required></lightning-input>
+            </div>
+
+            <div class="form-row">
+                <lightning-input label="Email" type="email" data-field="Email" value={email} onchange={handleChange} required></lightning-input>
+                <lightning-input label="Phone" data-field="Phone" value={phone} onchange={handleChange} required></lightning-input>
+            </div>
+
+            <div class="form-row">
+                <lightning-input label="Title" data-field="Title" value={title} onchange={handleChange} required></lightning-input>
+
+                <div class="account-lookup">
+                    <label class="slds-form-element__label"></label>
+                    <lightning-record-edit-form object-api-name="Contact" onsuccess={noop}>
+                        <lightning-input-field field-name="AccountId" data-field="AccountId" class="lookup"></lightning-input-field>
+                    </lightning-record-edit-form>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <lightning-input label="Department" data-field="Department" value={department} onchange={handleChange}></lightning-input>
+            </div>
+
+            <div class="button-row">
+                <lightning-button label="Create Contact" onclick={createContact} variant="brand"></lightning-button>
+                <lightning-button label="Clear" onclick={clearForm} variant="neutral"></lightning-button>
+            </div>
+        </div>
+    </lightning-card>
+</template>

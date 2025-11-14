@@ -1,0 +1,21 @@
+<template>
+    <h2>Multi-Step Form Wizard</h2>
+
+    <lightning-progress-indicator current-step={currentStepString} type="path">
+        <lightning-progress-step label="Personal Info" value="1" completed={step1Completed}></lightning-progress-step>
+        <lightning-progress-step label="Address Info" value="2" completed={step2Completed}></lightning-progress-step>
+        <lightning-progress-step label="Review & Submit" value="3" completed={step3Completed}></lightning-progress-step>
+    </lightning-progress-indicator>
+
+    <template if:true={isStepOne}>
+        <c-step-one onstepnext={handleStepNext}></c-step-one>
+    </template>
+
+    <template if:true={isStepTwo}>
+        <c-step-two step-data={allData} onstepnext={handleStepNext} onstepprevious={handleStepPrevious}></c-step-two>
+    </template>
+
+    <template if:true={isStepThree}>
+        <c-step-three all-data={allData} onstepprevious={handleStepPrevious} onformsubmitted={handleFormSubmitted}></c-step-three>
+    </template>
+</template>

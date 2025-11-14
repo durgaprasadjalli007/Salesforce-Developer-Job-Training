@@ -1,0 +1,19 @@
+<template>
+    <div class="container">
+        <h1 class="total-count">Total Students: {students.length}</h1>
+
+        <template for:each={studentsWithNumber} for:item="student">
+            <div key={student.id} class="student-card">
+                <div class="student-header">
+                    <span class="student-number">#{student.studentNumber}</span>
+                    <span class="student-name">{student.name}</span>
+                    <span class="grade-badge grade-{student.grade}">{student.grade}</span>
+                </div>
+                <div class="student-details">
+                    <p>Age: {student.age}</p>
+                    <p>Subject: {student.subject}</p>
+                </div>
+            </div>
+        </template>
+    </div>
+</template>

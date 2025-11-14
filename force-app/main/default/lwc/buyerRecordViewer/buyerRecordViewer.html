@@ -1,0 +1,62 @@
+<template>
+    <lightning-card title="Buyer Account Details">
+        <template if:true={buyer}>
+            <div class="slds-p-around_medium">
+          
+
+                <lightning-input
+                    label="Account Name"
+                    value={buyer.Name}
+                    data-field="Name"
+                    onchange={handleChange}
+                    disabled={inputDisabled}>
+                </lightning-input>
+
+                <lightning-input
+                    label="Phone"
+                    value={buyer.Phone}
+                    data-field="Phone"
+                    onchange={handleChange}
+                    disabled={inputDisabled}>
+                </lightning-input>
+
+                <lightning-combobox
+                    label="Budget Range"
+                    data-field="Budget_Range__c"
+                    value={buyer.Budget_Range__c}
+                    options={budgetOptions}
+                    placeholder="Select Budget"
+                    onchange={handleChange}
+                    disabled={inputDisabled}>
+                </lightning-combobox>
+
+                <lightning-combobox
+                    label="Status"
+                    data-field="Status__c"
+                    value={buyer.Status__c}
+                    options={statusOptions}
+                    placeholder="Select Status"
+                    onchange={handleChange}
+                    disabled={inputDisabled}>
+                </lightning-combobox>
+
+                <div class="slds-m-top_medium">
+                    <lightning-button
+                        label="Edit"
+                        onclick={handleEdit}
+                        class="slds-m-right_small"
+                        disabled={isEdit}>
+                    </lightning-button>
+
+                    <lightning-button
+                        variant="brand"
+                        label="Save"
+                        onclick={handleSave}
+                        disabled={isSaveDisabled}>
+                    </lightning-button>
+                </div>
+            </div>
+        </template>
+
+    </lightning-card>
+</template>

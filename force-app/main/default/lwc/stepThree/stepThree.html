@@ -1,0 +1,20 @@
+<template>
+    <div class="step-container">
+        <h3>Step 3: Review & Submit</h3>
+
+        <div class="review">
+            <p><strong>Name:</strong> {allData.name}</p>
+            <p><strong>Email:</strong> {allData.email}</p>
+            <p><strong>Phone:</strong> {allData.phone}</p>
+            <p><strong>Street:</strong> {allData.street}</p>
+            <p><strong>City:</strong> {allData.city}</p>
+            <p><strong>State:</strong> {allData.state}</p>
+            <p><strong>Zip:</strong> {allData.zip}</p>
+        </div>
+
+        <div>
+            <button onclick={handlePrevious}>Previous</button>
+            <button onclick={handleSubmit}>Submit</button>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,54 @@
+<template>
+    <lightning-card title="Contact Editor" icon-name="standard:contact">
+        <div class="slds-p-around_medium">
+            <template if:true={isLoading}>
+                <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+            </template>
+
+            <template if:true={error}>
+                <div class="slds-text-color_error">{error}</div>
+            </template>
+
+            <template if:true={contact}>
+                <template if:false={isEditMode}>
+                    <div class="view-mode">
+                        <p><strong>Name:</strong> {name}</p>
+                        <p><strong>Email:</strong> {email}</p>
+                        <p><strong>Phone:</strong> {phone}</p>
+                        <p><strong>Title:</strong> {title}</p>
+                        <p><strong>Account:</strong> {accountName}</p>
+                        <p><strong>Mobile:</strong> {mobilePhone}</p>
+                        <p><strong>Department:</strong> {department}</p>
+
+                        <div class="button-row">
+                            <lightning-button label="Edit" onclick={toggleEdit} variant="brand"></lightning-button>
+                            <lightning-button label="Delete" onclick={handleDelete} variant="destructive"></lightning-button>
+                        </div>
+                    </div>
+                </template>
+
+                <template if:true={isEditMode}>
+                    <lightning-record-edit-form object-api-name="Contact" onsuccess={handleSuccess} oncancel={handleCancel}>
+                        <div class="form-row">
+                            <lightning-input label="Name" data-field="Name" value={name} onchange={handleChange} required></lightning-input>
+                            <lightning-input label="Email" type="email" data-field="Email" value={email} onchange={handleChange} required></lightning-input>
+                        </div>
+                        <div class="form-row">
+                            <lightning-input label="Phone" data-field="Phone" value={phone} onchange={handleChange}></lightning-input>
+                            <lightning-input label="Mobile" data-field="MobilePhone" value={mobilePhone} onchange={handleChange}></lightning-input>
+                        </div>
+                        <div class="form-row">
+                            <lightning-input label="Title" data-field="Title" value={title} onchange={handleChange}></lightning-input>
+                            <lightning-input label="Department" data-field="Department" value={department} onchange={handleChange}></lightning-input>
+                        </div>
+
+                        <div class="button-row">
+                            <lightning-button label="Save" onclick={saveChanges} variant="brand"></lightning-button>
+                            <lightning-button label="Cancel" onclick={handleCancel} variant="neutral"></lightning-button>
+                        </div>
+                    </lightning-record-edit-form>
+                </template>
+            </template>
+        </div>
+    </lightning-card>
+</template>
